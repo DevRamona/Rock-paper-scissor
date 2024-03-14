@@ -1,38 +1,43 @@
-const ForButtons = document.querySelectorAll('button');
-const Final = document.getElementById('output');
-const UserScore = document.getElementById('score1');
-const ComputersScore = document.getElementById('computerScore');
 
-let PlayerScore = 0;
-let ComputerScore = 0;
+const buttons = document.querySelectorAll("button");
 
-ForButtons.forEach((button) => {
-    button.addEventListener('click', () => {
-        const Outcome = PlayRound(button.id, ComputerPlay());
-        Final.textContent = Outcome;
-    })
-})
+const resultEl = document.getElementById("result");
 
-function ComputerPlay() {
-    const options = ["rock", "paper", "scissors"];
-    const RandomOption = Math.floor(Math.random() * options.length);
-    return options[RandomOption];
+const playerScoreEl = document.getElementById("user-score");
+
+const computerScoreEl = document.getElementById("computer-score");
+
+let playerScore = 0;
+let computerScore = 0;
+
+buttons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const result = playRound(button.id, computerPlay());
+    resultEl.textContent = result;
+    
+  });
+});
+
+function computerPlay() {
+  const choices = ["rock", "paper", "scissors"];
+  const randomChoice = Math.floor(Math.random() * choices.length);
+  return choices[randomChoice];
 }
 
-function PlayRound(UserChoice, ComputerChoice){
-    if (UserChoice === ComputerChoice) {
-        return "It's a tie !";
-    } else if (
-        (UserChoice === "rock" && ComputerChoice === "scissors") ||
-        (UserChoice === "paper" && ComputerChoice === "rock") ||
-        (UserChoice === "scissors" && ComputerChoice === "paper")
-    ) {
-        PlayerScore++;
-        UserScore.textContent = PlayerScore;
-        return "You won! " + UserChoice + " beats " + ComputerChoice;
-    } else {
-        ComputerScore++;
-        ComputerScore.textContent = ComputerScore;
-        return "You lost! " + ComputerChoice + " beats " + UserChoice;
-    }
+function playRound(playerSelection, computerSelection) {
+  if (playerSelection === computerSelection) {
+    return "It's a tie!";
+  } else if (
+    (playerSelection === "rock" && computerSelection === "scissors") ||
+    (playerSelection === "paper" && computerSelection === "rock") ||
+    (playerSelection === "scissors" && computerSelection === "paper")
+  ) {
+    playerScore++;
+    playerScoreEl.textContent = playerScore;
+    return "You win! " + playerSelection + " beats " + computerSelection;
+  } else {
+    computerScore++;
+    computerScoreEl.textContent = computerScore;
+    return "You lose! " + computerSelection + " beats " + playerSelection;
+  }
 }
