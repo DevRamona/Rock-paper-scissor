@@ -8,7 +8,7 @@ const playerScoreEl = document.getElementById("user-score");
 const computerScoreEl = document.getElementById("computer-score");
 
 let playerScore = 1;
-let computerScore = 0;
+let computerScore = 1;
 
 buttons.forEach((button) => {
   button.addEventListener("click", () => {
