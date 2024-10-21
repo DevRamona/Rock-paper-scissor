@@ -7,7 +7,7 @@ const playerScoreEl = document.getElementById("user-score");
 
 const computerScoreEl = document.getElementById("computer-score");
 
-let playerScore = 0;
+let playerScore = 1;
 let computerScore = 0;
 
 buttons.forEach((button) => {
